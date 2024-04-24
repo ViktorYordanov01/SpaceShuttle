@@ -44,15 +44,15 @@ namespace SpaceLaunch
             this.Temperature = int.Parse(rawData[1]);
             this.WindSpeed = int.Parse(rawData[2]);
             if (WindSpeed < 0)
-                throw new ArgumentException("Wind speed that is less than 0m/s found in the data");
+                throw new ArgumentException("Wind speed less than 0m/s found in the data!");
             this.Humidity = int.Parse(rawData[3]);
             if (Humidity < 0 || Humidity > 100) 
-                throw new ArgumentException("Humidity that is not a percentage found in the data");
+                throw new ArgumentException("Humidity without percentage found in the data!");
             this.Precipitation = int.Parse(rawData[4]);
             if (Precipitation < 0 || Precipitation > 100) 
-                throw new ArgumentException("Precipitation that is not a percentage found in the data");
+                throw new ArgumentException("Precipitation without percentage found in the data!");
             if (rawData[5] != "Yes" && rawData[5] != "No") 
-                throw new ArgumentException("Lightning field that is not yes/no found in the data");
+                throw new ArgumentException("Lightning field that is not yes/no found in the data!");
             if (rawData[5] == "Yes") this.Lightning = true;
             this.CloudType = rawData[6];
         }
