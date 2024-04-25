@@ -9,10 +9,6 @@ namespace SpaceShuttle
     class SummaryNumField
     {
         public string FieldName { get; private set; } = "";
-        public int MinimalValue { get; private set; } = int.MinValue;
-        public int MaximumValue { get; private set; } = int.MaxValue;
-        public double AverageValue { get; private set; } = 0;
-        public double MedianValue { get; private set; } = 0;
         public int BestLaunchDay { get; private set; } = 0;
         private List<int> values;
         public List<int> Values => values;

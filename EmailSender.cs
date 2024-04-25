@@ -11,6 +11,9 @@ namespace SpaceShuttle
         public string ReceiverAddress { get; set; } = "";
         public string FilePath { get; set; } = "";
         public int BestLaunchDate { get; set; } = 0;
+        public string? SenderPassword { get; }
+        public string OutputPath { get; }
+
         public EmailSender(string senderAddress, string senderPswd, string receiverAddres, string filePath, int bestLaunchDate)
         {
             SenderAddress = senderAddress;
@@ -20,6 +23,14 @@ namespace SpaceShuttle
             BestLaunchDate = bestLaunchDate;
         }
 
+        public EmailSender(string? senderAddress, string? senderPassword, string? receiverAddress, string outputPath)
+        {
+            SenderAddress = senderAddress;
+            SenderPassword = senderPassword;
+            ReceiverAddress = receiverAddress;
+            OutputPath = outputPath;
+        }
+
         public void Send()
         {
 
@@ -27,7 +38,7 @@ namespace SpaceShuttle
             mailMessage.From = new MailAddress(SenderAddress);
             mailMessage.To.Add(new MailAddress(ReceiverAddress));
             mailMessage.Subject = "Weather report for rocket launch!";
-            mailMessage.Body = "Best Launch day is : " + BestLaunchDate.ToString();
+            mailMessage.Body = "Best Launch day for selected station is : " + BestLaunchDate.ToString();
 
             Attachment attachment = new Attachment(FilePath);
             mailMessage.Attachments.Add(attachment);

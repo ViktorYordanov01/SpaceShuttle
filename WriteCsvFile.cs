@@ -13,7 +13,7 @@ namespace SpaceLaunch
         {
             writer = new StreamWriter(filePath);
             FilePath = filePath;
-            writer.WriteLine("Parameters,AverageValue,MinValue,MaxValue,MedianValue,BestLaunchDate");
+            writer.WriteLine("Station,BestLaunchDate");
             WriteSummarizedData(rawData);
         }
 
@@ -31,13 +31,12 @@ namespace SpaceLaunch
                 return;
             }
             SummaryNumField numberData = new SummaryNumField(convertedValues, name, lowerBound, upperBound);
-            writer.WriteLine(name + "," + numberData.AverageValue + "," + numberData.MinimalValue + "," + numberData.MaximumValue + "," +
-                             numberData.MedianValue + "," + numberData.BestLaunchDay);
+            writer.WriteLine(name + "," + numberData.BestLaunchDay);
         }
         private void WriteStringData(List<string> data, string name)
         {
             SummaryStrFields stringData = new SummaryStrFields(data.GetRange(1, data.Count - 1), name);
-            writer.WriteLine(name + ",,,,," + stringData.BestLaunchDate);
+            writer.WriteLine(name + "," + stringData.BestLaunchDate);
         }
         private void WriteSummarizedData(List<List<string>> rawData)
         {
@@ -48,7 +47,7 @@ namespace SpaceLaunch
                 {
                     case "Temperature":
                         {
-                            WriteNumberData(l, 2, 31, name);
+                            WriteNumberData(l, 1, 31, name);
                         }
                         break;
                     case "Wind":
@@ -58,7 +57,7 @@ namespace SpaceLaunch
                         break;
                     case "Humidity":
                         {
-                            WriteNumberData(l, 0, 60, name);
+                            WriteNumberData(l, 0, 55, name);
                         }
                         break;
                     case "Precipitation":
@@ -72,6 +71,11 @@ namespace SpaceLaunch
                         }
                         break;
                     case "Clouds":
+                        {
+                            WriteStringData(l, name);
+                        }
+                        break;
+                    case "Station":
                         {
                             WriteStringData(l, name);
                         }

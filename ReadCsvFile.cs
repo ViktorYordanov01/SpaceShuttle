@@ -69,14 +69,15 @@ namespace SpaceLaunch
 
         public bool ValidateFieldNames()
         {
-            if (extractedRawDataColumns[0].Count != 7) return false;
-            if (extractedRawDataColumns[0][0] != "Day") return false;
-            if (extractedRawDataColumns[0][1] != "Temperature") return false;
-            if (extractedRawDataColumns[0][2] != "Wind") return false;
-            if (extractedRawDataColumns[0][3] != "Humidity") return false;
-            if (extractedRawDataColumns[0][4] != "Precipitation") return false;
-            if (extractedRawDataColumns[0][5] != "Lightning") return false;
-            if (extractedRawDataColumns[0][6] != "Clouds") return false;
+            if (extractedRawDataColumns[0].Count != 8) return false;
+            if (extractedRawDataColumns[0][0] != "Station") return false;
+            if (extractedRawDataColumns[0][1] != "Day") return false;
+            if (extractedRawDataColumns[0][2] != "Temperature") return false;
+            if (extractedRawDataColumns[0][3] != "Wind") return false;
+            if (extractedRawDataColumns[0][4] != "Humidity") return false;
+            if (extractedRawDataColumns[0][5] != "Precipitation") return false;
+            if (extractedRawDataColumns[0][6] != "Lightning") return false;
+            if (extractedRawDataColumns[0][7] != "Clouds") return false;
 
             return true;
         }
