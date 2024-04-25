@@ -20,23 +20,7 @@ namespace SpaceShuttle
         {
             this.values = values;
             this.FieldName = name;
-            CalculateSummary();
             CalculateBestLaunchDay(lowerBound, upperBound);
-        }
-
-        private void CalculateSummary()
-        {
-            List<int> copyValues = new List<int>(values);
-            copyValues.Sort();
-            MinimalValue = copyValues[0];
-            MaximumValue = copyValues.Last();
-            AverageValue = (double)copyValues.Sum() / copyValues.Count;
-
-            if (copyValues.Count % 2 == 0)
-            {
-                MedianValue = (double)(copyValues[copyValues.Count / 2] + copyValues[(copyValues.Count / 2) - 1]) / 2;
-            }
-            else MedianValue = copyValues[copyValues.Count / 2];
         }
         private void CalculateBestLaunchDay(int lowerBound, int upperBound)
         {
