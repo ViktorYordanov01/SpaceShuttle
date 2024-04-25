@@ -1,5 +1,7 @@
 ﻿
 
+using SpaceLaunch;
+
 namespace SpaceShuttle
 { 
     class Program
@@ -18,6 +20,16 @@ namespace SpaceShuttle
             }
 
             Console.WriteLine();
+
+            ReadCsvFile read = new ReadCsvFile(inputPath);
+            if(!read.ValidateFieldNames())
+            {
+                Console.WriteLine("Invalid fields are added in .csv file!");
+                return;
+            }
+
+            string outputPath = Path.GetDirectoryName(inputPath) + "\\test1.csv";
+            WriteCsvFile write = new WriteCsvFile(read.GetRawDataRows, outputPath);
 
         }
     }
